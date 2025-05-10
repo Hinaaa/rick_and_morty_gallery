@@ -7,12 +7,13 @@ function App() {
     const [characters] = useState(response.results)  // Storing character data. Using the mock data here
     const[searchCharacter, setSearchCharacter] = useState("")//state to store input
     const filteredCharacters =
-        characters.filter((character) =>
+        characters.filter((character) => //character filterization applied and stored back
             character.name.toLowerCase().includes(searchCharacter.toLowerCase())
-    ); //character filterization applied and stored back
+    );
 
     return (
         <>
+
             {/* Input field to search characters */}
             <input onChange={(e)=>setSearchCharacter(e.target.value)}/> {/* Update searchCharacter*/}
             {filteredCharacters.map((character)=>

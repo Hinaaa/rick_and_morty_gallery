@@ -15,3 +15,6 @@ export default function CharacterCard(props:Readonly<CharacterProps>) {
 //additional UI/logic can be added
 //reusable component if needed to be called by others.
 //called in app.tsx
+/*
+Props passed: name and image are passed from the parent (App.tsx) to render each character.
+ */
