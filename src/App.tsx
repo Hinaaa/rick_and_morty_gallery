@@ -2,6 +2,7 @@ import { useState } from 'react'
 import './App.css'
 import {response} from "./Data.tsx";
 import CharacterCard from "./CharacterCard.tsx";
+import Searchbar from "./Searchbar.tsx";
 
 function App() {
     const [characters] = useState(response.results)  // Storing character data. Using the mock data here
@@ -9,13 +10,20 @@ function App() {
     const filteredCharacters =
         characters.filter((character) => //character filterization applied and stored back
             character.name.toLowerCase().includes(searchCharacter.toLowerCase())
-    );
+        );
 
+    //new function handleSearch
+    function handleSearch(value: string) {
+        setSearchCharacter(value); // to updates searchCharacter state
+    }
     return (
         <>
-
+            <Searchbar
+                searchCharacter={searchCharacter} // Passed current search term (controlled input)
+                handleSearch={handleSearch} // Passed handleSearch function to update state
+            />
             {/* Input field to search characters */}
-            <input onChange={(e)=>setSearchCharacter(e.target.value)}/> {/* Update searchCharacter*/}
+            {/*<input onChange= this function moved from here. Update searchCharacter*/}
             {filteredCharacters.map((character)=>
                 <CharacterCard
                     key={character.id} //key should be on the root element, Key prop for efficient rendering
@@ -25,7 +33,7 @@ function App() {
             )}
             {/* Error message on no match */}
             {searchCharacter && filteredCharacters.length === 0  //searchCharacter → input is not empty and filteredCharacters.length === 0 → no match found
-            && <p>Character not Found!</p>}
+                && <p>Character not Found!</p>}
         </>
         //updated from characters.map to filteredCharacters.map  to display only the filtered characters based on the search input.
     );
@@ -33,7 +41,9 @@ function App() {
 
 export default App
 
-
-//by this step we were, direct HTML rendering inside App.tsx
-// CharacterCard used to display each character's name and image. and it can be called here
-//previously when called directly example: {characters.map((character) => ( <div key={character.id}> <h3>{character.name}</h3> <img src={character.image} alt={character.name} /> </div> ))}
+/*
+by this step we were, direct HTML rendering inside App.tsx
+CharacterCard used to display each character's name and image. and it can be called here
+previously when called directly example: {characters.map((character) => ( <div key={character.id}> <h3>{character.name}</h3> <img src={character.image} alt={character.name} /> </div> ))}
+handleSearch: added handleSearch to update the search term in App and passed it to Searchbar.
+ */
