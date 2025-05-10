@@ -23,4 +23,4 @@ export default App
 
 //by this step we were, direct HTML rendering inside App.tsx
 // CharacterCard used to display each character's name and image. and it can be called here
-//previosly when called diretcly exmaple: {characters.map((character) => ( <div key={character.id}> <h3>{character.name}</h3> <img src={character.image} alt={character.name} /> </div> ))}
+//previously when called directly example: {characters.map((character) => ( <div key={character.id}> <h3>{character.name}</h3> <img src={character.image} alt={character.name} /> </div> ))}
