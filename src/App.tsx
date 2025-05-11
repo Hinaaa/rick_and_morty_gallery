@@ -2,14 +2,18 @@ import './App.css'
 import {Route, Routes} from "react-router-dom";
 import Greetings from "./Greetings.tsx";
 import CharacterGallery from "./CharacterGallery.tsx";
+import Header from "./Header.tsx";
 
 function App() {
     //using Route
     return(
+        <>
+        <Header/> {/*call header here*/}
     <Routes>
         <Route path ={"/"} element={<Greetings/>}/>
-        <Route path={"characters"} element={<CharacterGallery/>}/> //CharacterGallery careated as seperate component and claled from here for better better structure and maintainability
+        <Route path={"characters"} element={<CharacterGallery/>}/> //CharacterGallery areated as seperate component and claled from here for better better structure and maintainability
     </Routes>
+        </>
     )}
 
 export default App
