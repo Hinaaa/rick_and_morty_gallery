@@ -3,6 +3,8 @@ import {Route, Routes} from "react-router-dom";
 import Greetings from "./Greetings.tsx";
 import CharacterGallery from "./CharacterGallery.tsx";
 import Header from "./Header.tsx";
+import { response } from './Data.tsx';
+import CharacterDetailCard from "./CharacterDetailCard.tsx";
 
 function App() {
     //using Route
@@ -11,7 +13,8 @@ function App() {
         <Header/> {/*call header here*/}
     <Routes>
         <Route path ={"/"} element={<Greetings/>}/>
-        <Route path={"characters"} element={<CharacterGallery/>}/> //CharacterGallery areated as seperate component and claled from here for better better structure and maintainability
+        <Route path={"characters"} element={<CharacterGallery/>}/> {/*CharacterGallery careated as seperate component and claled from here for better better structure and maintainability*/}
+        <Route path={"/characters/:id"} element={<CharacterDetailCard characters={response.results}/>}/>  {/* */}
     </Routes>
         </>
     )}
